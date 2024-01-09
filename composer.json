@@ -1,0 +1,16 @@
+{
+    "name": "jilcimar/twirp-php",
+    "description": "Projeto teste comunicação gRPC",
+    "autoload": {
+        "psr-4": {
+            "Jilcimar\\TwirpPhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "jilcimar",
+            "email": "jilcimar.fernandes0267@gmail.com"
+        }
+    ],
+    "require": {}
+}
