@@ -1,26 +1,27 @@
 <?php
 require 'vendor/autoload.php';
 
-use example\HelloWorldClient;
-use example\HelloRequest;
+// URL do servidor Go
+$serverUrl = 'http://localhost:9000/';
 
-// URL do servidor Twirp
-$serverUrl = 'http://localhost:8080';
+// Crie uma instância do cliente Twirp
+$client = new \GPBMetadata\Proto\Hello($serverUrl);
 
-// Inicialize o cliente Twirp para o serviço HelloWorld
-$client = new HelloWorldClient($serverUrl);
-
-// Crie uma solicitação para o método Hello
+// Crie uma instância da mensagem HelloRequest e defina o nome
 $request = new HelloRequest();
-$request->setName('Alice'); // Defina os parâmetros necessários para o método Hello
+$request->setName('jilcimar');
 
-// Chame o método Hello do serviço Twirp
 try {
-    $response = $client->Hello($request);
+    // Faça a chamada para o servidor Go usando o método SayHello
+    $response = $client->SayHello($request);
 
-    // Manipule a resposta recebida
-    echo "Mensagem do servidor: " . $response->getMessage() . PHP_EOL;
-} catch (\Twitch\Twirp\Error $e) {
-    // Lidar com erros Twirp
-    echo "Erro: " . $e->getMessage() . PHP_EOL;
+    // Se a chamada for bem-sucedida, imprima a resposta
+    if ($response instanceof HelloResponse) {
+        echo "Resposta do servidor: " . $response->getMessage() . "\n";
+    } else {
+        echo "Resposta inválida do servidor\n";
+    }
+} catch (\Exception $e) {
+    // Trate quaisquer exceções que possam ocorrer durante a chamada
+    echo "Erro ao chamar o servidor: " . $e->getMessage() . "\n";
 }
