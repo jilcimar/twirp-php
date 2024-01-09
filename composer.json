@@ -16,7 +16,8 @@
         "twirp/twirp": "^0.10.0",
         "protobuf-php/protobuf": "^0.1.3",
         "guzzlehttp/guzzle": "^7.8",
-        "guzzlehttp/psr7": "^2.6"
+        "guzzlehttp/psr7": "^2.6",
+        "google/protobuf": "^3.25"
     },
     "config": {
         "allow-plugins": {
